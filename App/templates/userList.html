@@ -1,0 +1,87 @@
+﻿<html>
+	<head>
+        {% load static %}
+		<title>emplist</title>
+		<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="top_content">
+				<div id="header">
+					<div id="rightheader">
+						<p>
+							2009/11/20
+							<br />
+						</p>
+					</div>
+					<div id="topheader">
+						<h1 id="title">
+							<a href="#">Main</a>
+						</h1>
+					</div>
+					<div id="navigation">
+					</div>
+				</div>
+
+				<div id="content">
+					<p id="whereami">
+					</p>
+					<h1>
+						Welcome!
+					</h1>
+					<table class="table">
+						<tr class="table_header">
+							<td>
+								ID
+							</td>
+							<td>
+                                GRADE
+							</td>
+							<td>
+
+							</td>
+						</tr>
+						<tr class="row1">
+							<td>
+								1
+							</td>
+							<td>
+								zs
+							</td>
+							<td>
+								<a href="#">删除</a>
+								<a href='#'>修改</a>
+							</td>
+						</tr>
+                        {% for grade1 in gradelist %}
+                            <tr class="row1">
+                            <td>
+								{{ grade1.id }}
+							</td>
+                            <td>
+                                {{ grade1.g_name }}
+                            </td>
+                            <td>
+								<a href="{% url 'myapp:student' stu=grade1.id %}">查学生</a>
+							</td>
+                            </tr>
+                        {% endfor %}
+					</table>
+					<p>
+						<input type="button" class="button" value="退出系统"
+							onclick="location='login.html'" />
+					</p>
+				</div>
+			</div>
+			<div id="footer">
+				<div id="footer_bg">
+                    {% for grade in gradelist %}
+                        {{ grade.g_name }}
+                        {% endfor %}
+					ABC@126.com
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

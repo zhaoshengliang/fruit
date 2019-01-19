@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {{ name }}
+<hr>
+    <ul>
+        {% for house in houses %}
+            <li>{{ house.name }}</li>
+            <!-- 老板说了 不给尾款 就睡眠3秒  time.sleep(2)-->
+            {% empty %}
+            真的没了？？？
+        {% endfor %}
+
+
+    </ul>
+<hr>
+    <ul>
+        {% for house in houses %}
+            <li>{{ house.getname }}</li>
+        {% endfor %}
+    </ul>
+<hr>
+     <ul>
+            <li>{{ houses.0.name}}</li>
+            <li>{{ houses.2.name}}</li>
+    </ul>
+<hr>
+    {{ hobby_dict.username }}
+
+<hr>
+    <ul>
+        {% for house in houses %}
+{#            <li>{{ forloop.counter }}:{{ house.name }}</li>#}
+{#            <li>{{ forloop.counter0 }}:{{ house.name }}</li>#}
+{#            <li>{{ forloop.revcounter }}:{{ house.name }}</li>#}
+            <li>{{ forloop.revcounter0 }}:{{ house.name }}</li>
+        {% endfor %}
+    </ul>
+<hr>
+{#    这回你还看到了吗 兄弟#}
+    {% comment %}
+            fjlfjsklfjsdljflsd
+            fdsjlfjdslfjdsf
+            jlfdlsjflkdsjfds
+    {% endcomment %}
+    <ul>
+        {% for house in houses %}
+            {% if forloop.first %}
+                <li style="color: red">{{ house.name }}</li>
+                {% elif forloop.last %}
+                 <li style="color: blueviolet">{{ house.name }}</li>
+                {% else %}
+                <li style="color: green">{{ house.name }}</li>
+            {% endif %}
+        {% endfor %}
+
+
+    </ul>
+<hr>
+{#    widthratio 参数  分母  分子#}
+    {% widthratio count 1 5%}
+    {% widthratio count 5 1%}
+<hr>
+    <ul>
+        {% for house in houses %}
+            {% if forloop.counter|divisibleby:2 %}
+                <li style="color: pink">{{ house.name }}</li>
+                {% else %}
+                <li style="color: orange">{{ house.name }}</li>
+            {% endif %}
+        {% endfor %}
+
+    </ul>
+<hr>
+    <ul>
+        {% for house in houses %}
+            {% if forloop.counter == 3 %}
+                <li style="color: orange">{{ house.name }}</li>
+                {% else %}
+                <li>{{ house.name }}</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+<hr>
+    <ul>
+        {% for house in houses %}
+            {% ifequal forloop.counter 3 %}
+                <li style="color: orange">{{ house.name }}</li>
+                {% else %}
+                <li>{{ house.name }}</li>
+            {% endifequal %}
+        {% endfor %}
+    </ul>
+<hr>
+    {{ code|upper|lower }}
+<hr>
+    {{ code1 }}
+<hr>
+    {% autoescape off%}
+        {{ code1 }}
+    {% endautoescape %}
+<hr>
+
+    {{ count|add:2 }}
+    {{ count|add:-2 }}
+</body>
+</html>

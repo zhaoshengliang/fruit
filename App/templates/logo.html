@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% for i in img %}
+    <p>{{ MEDIA_URL }}{{ i.image }}</p>
+<img src="../{{ MEDIA_URL }}{{ i.image }}">
+{% endfor %}
+</body>
+</html>

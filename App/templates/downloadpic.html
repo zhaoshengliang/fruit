@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>showpic</title>
+</head>
+<body>
+    <ul id="showme">
+        {% for foo in piclist  %}
+            <li>
+                <p>{{ foo.src }}</p>
+            <img src="{{ foo.src }}"></img>
+            </li>
+        {% endfor %}
+
+    </ul>
+</body>
+</html>

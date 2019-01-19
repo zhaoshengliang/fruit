@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form action="#" method="post">
+       <label for="name">姓名</label>
+       <input type="text" name="s_name"  id="name" /><br/>
+       <label for="gradeid">班级</label>
+        <select id = "gradeid" name = "grade_id">
+        </select><br/>
+    <input type="submit" value="新建">
+    </form>
+
+{% endblock %}
+{% block extJS %}
+ <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script>
+     $(function () {
+          $.ajax({
+              url: '{% url 'myapp:ajax_load_grade' %}',
+              type: 'POST',
+              dataType: 'json',
+              success: function (data) {
+                  var content = '';
+                  $.each(data, function (i, item) {
+                      content += '<option value=' + item.id + '>' + item.g_name + '</option>'
+                  });
+                  $('#gradeid').html(content)
+              },
+          });
+     })
+ </script>
+{% endblock %}
+
+
